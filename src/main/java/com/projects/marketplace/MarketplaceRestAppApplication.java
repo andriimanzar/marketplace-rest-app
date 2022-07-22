@@ -1,4 +1,4 @@
-package com.example.marketplacerestapp;
+package com.projects.marketplace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
