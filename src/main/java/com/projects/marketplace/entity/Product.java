@@ -8,11 +8,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +25,7 @@ public class Product {
 
     @Setter(AccessLevel.PRIVATE)
     @ManyToMany
-    @JoinTable(name = "user_product", joinColumns = @JoinColumn(name ="product_id"),
+    @JoinTable(name = "users_products", joinColumns = @JoinColumn(name ="product_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users = new HashSet<>();
 

@@ -1,4 +1,4 @@
-package com.projects.marketplace.dao;
+package com.projects.marketplace.repository;
 
 import com.projects.marketplace.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
