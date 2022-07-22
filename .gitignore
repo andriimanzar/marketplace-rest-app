@@ -1,0 +1,14 @@
+!.mvn/wrapper/maven-wrapper.jar
+/.mvn/
+/mvnw
+/mvnw.bat
+mvnw.cmd
+HELP.md
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+.idea
+*.iws
+*.iml
+*.ipr
+
