@@ -1,6 +1,6 @@
 package com.projects.marketplace.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,7 +28,7 @@ public class User {
     private BigDecimal moneyAmount;
 
     @Setter(AccessLevel.PRIVATE)
-    @JsonManagedReference
+    @JsonIgnore
     @ManyToMany(mappedBy = "users")
     private List<Product> products = new ArrayList<>();
 

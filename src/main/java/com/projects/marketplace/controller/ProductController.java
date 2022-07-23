@@ -2,8 +2,10 @@ package com.projects.marketplace.controller;
 
 import com.projects.marketplace.entity.Product;
 import com.projects.marketplace.entity.User;
+import com.projects.marketplace.exception.EntityNotFoundException;
 import com.projects.marketplace.service.ProductService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,12 +25,20 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable Long id){
+        Product product = productService.findProductById(id);
+        if(product == null) throw new EntityNotFoundException("Cannot find product with id = " + id);
+        return product;
+    }
+
     @GetMapping("/{id}/users")
     public List<User> getAllUsersThatBoughtProduct(@PathVariable Long id){
         return productService.allUsersThatBoughtProduct(id);
     }
 
-    @PostMapping(consumes = "application/json", produces = "application/json")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Product saveProduct(@RequestBody Product product){
         return productService.saveProduct(product);
@@ -38,6 +48,7 @@ public class ProductController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProduct(@PathVariable Long id){
         productService.deleteProduct(id);
+
     }
 
 }

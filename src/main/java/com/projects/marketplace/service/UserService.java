@@ -9,6 +9,8 @@ public interface UserService {
 
     List<User> getAllUsers();
 
+    User findUserById(Long id);
+
     void buyProduct(Long userId, Long productId);
 
     List<Product> getAllUserProducts(Long userId);

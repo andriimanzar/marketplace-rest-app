@@ -1,6 +1,6 @@
 package com.projects.marketplace.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,8 +25,8 @@ public class Product {
     private BigDecimal price;
 
     @Setter(AccessLevel.PRIVATE)
-    @JsonBackReference
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinTable(name = "users_products", joinColumns = @JoinColumn(name ="product_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users = new ArrayList<>();

@@ -9,6 +9,8 @@ public interface ProductService {
 
     List<Product> getAllProducts();
 
+    Product findProductById(Long id);
+
     List<User> allUsersThatBoughtProduct(Long productId);
 
     Product saveProduct(Product product);

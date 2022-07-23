@@ -13,7 +13,6 @@
     CREATE TABLE IF NOT EXISTS users_products(
     user_id BIGINT NOT NULL,
     product_id BIGINT NOT NULL,
-    CONSTRAINT users_products_pk PRIMARY KEY(user_id,product_id),
     CONSTRAINT users_products_users_fk FOREIGN KEY(user_id) REFERENCES users(id),
     CONSTRAINT users_products_products_fk FOREIGN KEY(product_id) REFERENCES products(id));
 
