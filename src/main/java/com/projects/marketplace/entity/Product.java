@@ -1,13 +1,14 @@
 package com.projects.marketplace.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-@NoArgsConstructor
+
 @Data
 @EqualsAndHashCode(of = "id")
 @Entity
@@ -24,9 +25,10 @@ public class Product {
     private BigDecimal price;
 
     @Setter(AccessLevel.PRIVATE)
+    @JsonBackReference
     @ManyToMany
     @JoinTable(name = "users_products", joinColumns = @JoinColumn(name ="product_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> users = new HashSet<>();
+    private List<User> users = new ArrayList<>();
 
 }

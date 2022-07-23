@@ -1,13 +1,14 @@
 package com.projects.marketplace.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-@NoArgsConstructor
+
 @Data
 @EqualsAndHashCode(of = "id")
 @Entity
@@ -27,8 +28,9 @@ public class User {
     private BigDecimal moneyAmount;
 
     @Setter(AccessLevel.PRIVATE)
+    @JsonManagedReference
     @ManyToMany(mappedBy = "users")
-    private Set<Product> products = new HashSet<>();
+    private List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product){
         products.add(product);
