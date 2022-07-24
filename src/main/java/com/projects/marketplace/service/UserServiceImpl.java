@@ -8,6 +8,7 @@ import com.projects.marketplace.repository.ProductRepository;
 import com.projects.marketplace.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -60,7 +61,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Product> getAllUserProducts(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() ->
-                new EntityNotFoundException("Cannot find user with id = " + userId ));;
+                new EntityNotFoundException("Cannot find user with id = " + userId ));
         return user.getProducts();
     }
 }

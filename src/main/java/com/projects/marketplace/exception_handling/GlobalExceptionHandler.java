@@ -10,21 +10,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-
     @ExceptionHandler
-    public ResponseEntity<IncorrectData> handleEntityNotFoundException(EntityNotFoundException exception){
-
-        return new ResponseEntity<>(fillIncorrectData(exception), HttpStatus.NOT_FOUND);
+    public ResponseEntity<ExceptionInfo> handleEntityNotFoundException(EntityNotFoundException exception){
+        return new ResponseEntity<>(fillExceptionInfo(exception), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler
-    public ResponseEntity<IncorrectData> handleNotEnoughMoneyException(NotEnoughMoneyException exception){
-        return new ResponseEntity<>(fillIncorrectData(exception),HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ExceptionInfo> handleNotEnoughMoneyException(NotEnoughMoneyException exception){
+        return new ResponseEntity<>(fillExceptionInfo(exception),HttpStatus.BAD_REQUEST);
     }
 
-    private IncorrectData fillIncorrectData(Exception e){
-        IncorrectData incorrectData = new IncorrectData();
-        incorrectData.setInfo(e.getMessage());
-        return incorrectData;
+    private ExceptionInfo fillExceptionInfo(Exception exception){
+        ExceptionInfo exceptionInfo = new ExceptionInfo();
+        exceptionInfo.setInfo(exception.getMessage());
+        return exceptionInfo;
     }
 }

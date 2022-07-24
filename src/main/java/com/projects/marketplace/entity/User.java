@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Data
 @EqualsAndHashCode(of = "id")
 @Entity
@@ -41,4 +40,5 @@ public class User {
         products.remove(product);
         product.getUsers().remove(this);
     }
+
 }

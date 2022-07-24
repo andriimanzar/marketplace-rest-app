@@ -7,7 +7,6 @@ import com.projects.marketplace.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -42,7 +41,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<User> allUsersThatBoughtProduct(Long productId) {
         Product product = productRepository.findById(productId).orElseThrow(() ->
-                new EntityNotFoundException("Cannot find product with id = " + productId));;
+                new EntityNotFoundException("Cannot find product with id = " + productId));
         return product.getUsers();
     }
 }
